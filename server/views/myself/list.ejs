@@ -1,0 +1,91 @@
+<%- include ('../partials/header.ejs') %>
+    <%- include ('../partials/main-nav.ejs') %>
+
+
+        <!-- Main Content -->
+        <main class="container">
+            <div class="row">
+                <div class="offset-md-1 col-md-11">
+                    <h1>
+                        <%= title %>
+                    </h1>
+
+                    <% if(typeof displayName == 'string' && displayName) { %>
+                        <a href="/contact-list/add" class="btn btn-primary" role="button">
+                            <i class="fas fa-plus-circle"></i> Add Contact</a>
+                        <% } %>
+                            <br>
+                            <table class="table table-bordered table-striped table-hover">
+                                <!-- Header Row-->
+                                <tr class="d-flex">
+                                    <% if(typeof displayName == 'string' && displayName) { %>
+                                        <th class="text-center col-2">First Name</th>
+                                        <th class="text-center col-2">Last Name</th>
+                                        <th class="text-center col-1">Address</th>
+                                        <th class="col-4">Description</th>
+                                        <th class="text-center col-1">Email</th>
+                                        <th class="text-center col-1"></th>
+                                        <th class="text-center col-1"></th>
+                                        <% } else { %>
+                                            <th class="text-center col-2">Title</th>
+                                            <th class="text-center col-2">Author</th>
+                                            <th class="text-center col-1">Year</th>
+                                            <th class="col-6">Description</th>
+                                            <th class="text-center col-1">Price</th>
+                                            <% } %>
+                                </tr>
+
+                                <!-- Repeatable Template Row -->
+
+                                <% for(let count = 0; count < ContactList.length; count++) { %>
+                                    <tr class="d-flex">
+                                        <% if(typeof displayName == 'string' && displayName) { %>
+                                            <td class="text-center col-2">
+                                                <%= ContactList[count].first_name %>
+                                            </td>
+                                            <td class="text-center col-2">
+                                                <%= ContactList[count].last_name %>
+                                            </td>
+                                            <td class="text-center col-1">
+                                                <%= ContactList[count].address %>
+                                            </td>
+                                            <td class="col-4">
+                                                <%= ContactList[count].description %>
+                                            </td>
+                                            <td class="text-center col-1">
+                                                <%= ContactList[count].email %>
+                                            </td>
+                                            <td class="text-center col-1">
+                                                <a href="/contact-list/edit/<%= ContactList[count]._id %>" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-pencil-alt"></i> Edit</a>
+                                            </td>
+                                            <td class="text-center col-1">
+                                                <a href="/contact-list/delete/<%= ContactList[count]._id %>" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash-alt"></i> Delete</a>
+                                            </td>
+                                            <% } else { %>
+                                                <td class="text-center col-2">
+                                                    <%= ContactList[count].name %>
+                                                </td>
+                                                <td class="text-center col-2">
+                                                    <%= ContactList[count].author %>
+                                                </td>
+                                                <td class="text-center col-1">
+                                                    <%= ContactList[count].published %>
+                                                </td>
+                                                <td class="col-6">
+                                                    <%= ContactList[count].description %>
+                                                </td>
+                                                <td class="text-center col-1">
+                                                    <%= ContactList[count].price %>
+                                                </td>
+                                                <% } %>
+                                    </tr>
+                                    <% } %>
+                            </table>
+                </div>
+            </div>
+        </main>
+
+        <%- include ( '../partials/bottom-nav.ejs') %>
+            <%- include ('../partials/footer.ejs') %>

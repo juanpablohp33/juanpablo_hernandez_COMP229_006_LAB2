@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ac9e5ca0-5f06-4af7-8bbe-e4673eabd9e0/microsoft.web/sites/subscriptions/ac9e5ca0-5f06-4af7-8bbe-e4673eabd9e0/resourceGroups/service-web/providers/Microsoft.Web/sites/juanpablohernandezpalacios",
+    "appService.deploySubpath": "."
+}
